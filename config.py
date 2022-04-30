@@ -11,8 +11,8 @@
 
 countryCode = '1'        # - Do not add a + here. Just the number
 phone = '4045905239'     # - No spaces or punctuation
+username = '4045905239'
 password ='COTPS2022!'     # - Dont have spaces between the '' - should look like: ='P4ssW0rd!'
-
 doCycle = True          # Cycle Trades
 doReferral = False       # Collect Referral Bonuses. 
 doReferral = False       # Collect Referral Bonuses.

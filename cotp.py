@@ -414,7 +414,7 @@ def logging_info(message, var = ''):
     message = message.replace('%s', str(var))
     data = {
         "content" : "INFO:" + message,
-        "username" : "4045905239"
+        "username" : username
     }
     print(data)
     if discordWebhook != "":
@@ -428,7 +428,7 @@ def logging_critical(message, var = ''):
     message = message.replace('%s', str(var))
     data = {
         "content" : "<@" + discordPingID + "> CRITICAL:" + message,
-        "username" : "4045905239"
+        "username" : username
     }
     print(data)
     if discordWebhook != "":
@@ -442,7 +442,7 @@ def logging_warning(message, var = ''):
     message = message.replace('%s', str(var))
     data = {
         "content" : "<@" + discordPingID + "> WARNING:" + message,
-        "username" : "4045905239"
+        "username" : username
     }
     print(data)
     if discordWebhook != "":
