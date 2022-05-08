@@ -3,6 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 import json
 import urllib.parse
 
+from pytz import country_names
+from urllib3 import Retry
+import phonenumbers
+
 # create app object
 app = Flask(__name__)
 
@@ -28,6 +32,16 @@ def index():
         # create dictionary
         decoded = {i.split('=')[0]: i.split('=')[1] for i in decoded}
         print(decoded)
+
+        country_code = decoded['mobile_number']
+        try:
+
+            country_code = phonenumbers.parse(country_code)
+        except:
+            return 'Invalid Phone Number or Country Code was not present...'
+        print(country_code.country_code)
+        decoded['country_code'] = country_code.country_code
+
         # decoded = decoded.replace('=', ':')
         # # add curly braces
         # decoded = '{' + decoded + '}'
