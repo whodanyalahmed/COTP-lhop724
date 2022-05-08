@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css"
+    />
+  </head>
+  <body>
+    <h1>A demo with IP lookup</h1>
+    <form style="margin-left: 150px">
+      <input type="tel" id="mobile-number" placeholder="e.g. +1 702 123 4567" />
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
+    <script>
+      $("#mobile-number").intlTelInput({
+        initialCountry: "auto",
+        geoIpLookup: function (callback) {
+          $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
+            resp
+          ) {
+            var countryCode = resp && resp.country ? resp.country : "";
+            callback(countryCode);
+          });
+        },
+        utilsScript: "../../build/js/utils.js", // just for formatting/placeholders etc
+      });
+    </script>
+  </body>
+</html>
