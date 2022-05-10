@@ -34,10 +34,16 @@ def index():
         try:
 
             country_code = phonenumbers.parse(country_code)
-        except:
+            # get National Number
+            national = country_code.national_number
+            print("This is national number: ",national)
+            
+            decoded['mobile_number'] = national
+        except Exception as e:
+            print(e)
             return 'Invalid Phone Number or Country Code was not present...'
         print(country_code.country_code)
-        decoded['country_code'] = country_code.country_code
+        decoded['country_code'] = "+"+str(country_code.country_code)
 
         # decoded = decoded.replace('=', ':')
         # # add curly braces
