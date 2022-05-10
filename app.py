@@ -23,15 +23,12 @@ def index():
         # data = json.loads(data)
         decoded = urllib.parse.unquote(data)
 
-        print(data)
-        print(decoded)
         # turn decoded data into json
 
         decoded = decoded.split('&')
-        print(decoded)
+
         # create dictionary
         decoded = {i.split('=')[0]: i.split('=')[1] for i in decoded}
-        print(decoded)
 
         country_code = decoded['mobile_number']
         try:
