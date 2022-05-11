@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import json
 import urllib.parse
+from cotp import main
 
 from pytz import country_names
 from urllib3 import Retry
@@ -36,8 +37,8 @@ def index():
             country_code = phonenumbers.parse(country_code)
             # get National Number
             national = country_code.national_number
-            print("This is national number: ",national)
-            
+            print("This is national number: ", national)
+
             decoded['mobile_number'] = national
         except Exception as e:
             print(e)
@@ -50,7 +51,7 @@ def index():
         # decoded = '{' + decoded + '}'
         # convert to json
         # decoded = json.loads(decoded)
-
+        # main()
         return decoded
 
     return render_template('index.html')
